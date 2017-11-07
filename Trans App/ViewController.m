@@ -33,11 +33,11 @@
     CGPoint touch2Location = [touch2 locationInView:nil];
     CGPoint touch2PreviousLocation = [touch2 previousLocationInView:nil];
     
-
-    CGFloat distance = [self distanceBetweenPoints:touch1Location and:touch2Location];
+    CGFloat distance = [self distanceBetweenPoints:touch1Location
+                                               and:touch2Location];
     
-    
-    CGFloat prevDistance = [self distanceBetweenPoints:touch1PreviousLocation and:touch2PreviousLocation];
+    CGFloat prevDistance = [self distanceBetweenPoints:touch1PreviousLocation
+                                                   and:touch2PreviousLocation];
     
     CGFloat scaleRatio = distance / prevDistance;
     
@@ -71,11 +71,12 @@ CGAffineTransform transformWithRotation(CGAffineTransform oldTransform,
         UITouch *touch  = [[[event touchesForView:_redBox] allObjects] objectAtIndex:0];
         self.redBox.transform = transformWithRotation(_redBox.transform,touch,_redBox,self.view);
     }
-    
     else if ([[allTouches allObjects] count] == 2)
     {
-        UITouch *touch1  = [[[event touchesForView:_redBox] allObjects] objectAtIndex:0];
-        UITouch *touch2 = [[[event touchesForView:_redBox] allObjects] objectAtIndex:1];
+        UITouch *touch1  = [[[event touchesForView:_redBox] allObjects]
+                            objectAtIndex:0];
+        UITouch *touch2 = [[[event touchesForView:_redBox] allObjects]
+                           objectAtIndex:1];
         
         _redBox.transform = [self transformWithScale:_redBox.transform and:touch1 and:touch2];
     }
